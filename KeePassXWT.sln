@@ -2,29 +2,41 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeePassXWT", "KeePassXWT\KeePassXWT.csproj", "{EBD72AC6-1974-47C7-BF45-5B2838F25C10}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C93D746E-1586-4D4F-B411-BF5A966E6A08} = {C93D746E-1586-4D4F-B411-BF5A966E6A08}
+		{C3887A93-B2BD-4097-8E2F-3A063EFF32FD} = {C3887A93-B2BD-4097-8E2F-3A063EFF32FD}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xwt", "xwt\Xwt\Xwt.csproj", "{92494904-35FA-4DC9-BDE9-3A3E87AC49D3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xwt.Gtk", "xwt\Xwt.Gtk\Xwt.Gtk.csproj", "{C3887A93-B2BD-4097-8E2F-3A063EFF32FD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xwt.WPF", "xwt\Xwt.WPF\Xwt.WPF.csproj", "{C93D746E-1586-4D4F-B411-BF5A966E6A08}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|x86 = Debug|x86
-		Release|x86 = Release|x86
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{92494904-35FA-4DC9-BDE9-3A3E87AC49D3}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{92494904-35FA-4DC9-BDE9-3A3E87AC49D3}.Debug|x86.Build.0 = Debug|Any CPU
-		{92494904-35FA-4DC9-BDE9-3A3E87AC49D3}.Release|x86.ActiveCfg = Release|Any CPU
-		{92494904-35FA-4DC9-BDE9-3A3E87AC49D3}.Release|x86.Build.0 = Release|Any CPU
-		{C3887A93-B2BD-4097-8E2F-3A063EFF32FD}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{C3887A93-B2BD-4097-8E2F-3A063EFF32FD}.Debug|x86.Build.0 = Debug|Any CPU
-		{C3887A93-B2BD-4097-8E2F-3A063EFF32FD}.Release|x86.ActiveCfg = Release|Any CPU
-		{C3887A93-B2BD-4097-8E2F-3A063EFF32FD}.Release|x86.Build.0 = Release|Any CPU
-		{EBD72AC6-1974-47C7-BF45-5B2838F25C10}.Debug|x86.ActiveCfg = Debug|x86
-		{EBD72AC6-1974-47C7-BF45-5B2838F25C10}.Debug|x86.Build.0 = Debug|x86
-		{EBD72AC6-1974-47C7-BF45-5B2838F25C10}.Release|x86.ActiveCfg = Release|x86
-		{EBD72AC6-1974-47C7-BF45-5B2838F25C10}.Release|x86.Build.0 = Release|x86
+		{EBD72AC6-1974-47C7-BF45-5B2838F25C10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBD72AC6-1974-47C7-BF45-5B2838F25C10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBD72AC6-1974-47C7-BF45-5B2838F25C10}.Release|Any CPU.ActiveCfg = Release|x86
+		{92494904-35FA-4DC9-BDE9-3A3E87AC49D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92494904-35FA-4DC9-BDE9-3A3E87AC49D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92494904-35FA-4DC9-BDE9-3A3E87AC49D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92494904-35FA-4DC9-BDE9-3A3E87AC49D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3887A93-B2BD-4097-8E2F-3A063EFF32FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3887A93-B2BD-4097-8E2F-3A063EFF32FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3887A93-B2BD-4097-8E2F-3A063EFF32FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3887A93-B2BD-4097-8E2F-3A063EFF32FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C93D746E-1586-4D4F-B411-BF5A966E6A08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C93D746E-1586-4D4F-B411-BF5A966E6A08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C93D746E-1586-4D4F-B411-BF5A966E6A08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C93D746E-1586-4D4F-B411-BF5A966E6A08}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = KeePassXWT\KeePassXWT.csproj
