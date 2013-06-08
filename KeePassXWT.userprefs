@@ -1,0 +1,23 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="xwt/Xwt.Gtk/Xwt.GtkBackend/ActionBackend.cs">
+    <Files>
+      <File FileName="KeePassXWT/Program.cs" Line="13" Column="5" />
+      <File FileName="KeePassXWT/Ui/MainWindow.cs" Line="23" Column="54" />
+      <File FileName="xwt/Xwt/Xwt/Command.cs" Line="45" Column="56" />
+      <File FileName="xwt/Xwt/Xwt/MenuItem.cs" Line="92" Column="25" />
+      <File FileName="xwt/Xwt.Gtk/Xwt.GtkBackend/MenuItemBackend.cs" Line="101" Column="33" />
+      <File FileName="xwt/Xwt/Xwt/Accelerator.cs" Line="18" Column="3" />
+      <File FileName="xwt/Xwt/Xwt.Backends/IMenuItemBackend.cs" Line="78" Column="3" />
+      <File FileName="xwt/Xwt/Xwt/Action.cs" Line="11" Column="21" />
+      <File FileName="xwt/Xwt/Xwt.Backends/IActionBackend.cs" Line="7" Column="29" />
+      <File FileName="xwt/Xwt.Gtk/Xwt.GtkBackend/ActionBackend.cs" Line="34" Column="11" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/home/david/dev/KeePassXWT/xwt/Xwt.Gtk/Xwt.GtkBackend/WindowBackend.cs" line="111" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

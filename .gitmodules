@@ -1,0 +1,3 @@
+[submodule "xwt"]
+	path = xwt
+	url = git://github.com/dlech/xwt
