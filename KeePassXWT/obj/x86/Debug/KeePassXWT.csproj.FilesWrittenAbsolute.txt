@@ -1,5 +1,0 @@
-/home/david/dev/KeePassXWT/KeePassXWT/bin/Debug/Xwt.Gtk.dll.config
-/home/david/dev/KeePassXWT/KeePassXWT/bin/Debug/KeePassXWT.exe.mdb
-/home/david/dev/KeePassXWT/KeePassXWT/bin/Debug/KeePassXWT.exe
-/home/david/dev/KeePassXWT/KeePassXWT/obj/x86/Debug/KeePassXWT.exe
-/home/david/dev/KeePassXWT/KeePassXWT/obj/x86/Debug/KeePassXWT.exe.mdb
