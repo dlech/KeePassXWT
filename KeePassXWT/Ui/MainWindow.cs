@@ -7,12 +7,10 @@ namespace KeePassXWT
 	{
 		public MainWindow ()
 		{
+			StartPosition = WindowPosition.CenterScreen;
 			Title = "KeePassXWT";
 
-			var screenCenter = ScreenBounds.Center;
-			Location = new Point (screenCenter.X - Width / 2,
-			                      screenCenter.Y - Height / 2);
-			Size = new Size (400, 200);
+			Size = new Size (600, 400);
 
 			MainMenu = new Menu ();
 			var fileMenu = new MenuItem ("_File");
