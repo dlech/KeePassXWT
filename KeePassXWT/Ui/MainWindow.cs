@@ -5,12 +5,16 @@ namespace KeePassXWT
 {
 	public class MainWindow : Window
 	{
+		CommandManager commandManager;
+
 		public MainWindow ()
 		{
 			StartPosition = WindowPosition.CenterScreen;
 			Title = "KeePassXWT";
 
 			Size = new Size (600, 400);
+
+			commandManager = new CommandManager ();
 
 			MainMenu = new Menu ();
 			var fileMenu = new MenuItem ("_File");
@@ -19,8 +23,13 @@ namespace KeePassXWT
 			fileMenu.SubMenu = new Menu ();
 
 			var fileNewMenuItem = new MenuItem (StockCommand.New);
-			fileNewMenuItem.Clicked += (sender, e) => MessageDialog.Confirm("NEW!", new Command(StockCommand.Ok));
+			fileNewMenuItem.Clicked += (sender, e) =>
+			{
+				MessageDialog.RootWindow = this;
+				MessageDialog.Confirm ("NEW!", new Command (StockCommand.Ok));
+			};
 			fileMenu.SubMenu.Items.Add (fileNewMenuItem);
+			commandManager.Commands.Add (fileNewMenuItem.Command);
 
 			var fileQuitMenuItem = new MenuItem (StockCommand.Quit);
 			fileQuitMenuItem.Clicked += (sender, e) => Application.Exit ();
