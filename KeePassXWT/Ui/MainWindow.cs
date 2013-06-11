@@ -21,7 +21,7 @@ namespace KeePassXWT
 			var newCommand = new Command (StockCommand.New);
 			Commands.Add (newCommand);
 			var fileNewMenuItem = newCommand.CreateMenuItem ();
-			fileNewMenuItem.Clicked += (sender, e) =>
+			newCommand.Activated += (sender, e) =>
 			{
 				MessageDialog.RootWindow = this;
 				MessageDialog.Confirm ("NEW!", new Command (StockCommand.Ok));
@@ -42,7 +42,7 @@ namespace KeePassXWT
 			var quitCommand = new Command (StockCommand.Quit);
 			Commands.Add (quitCommand);
 			var fileQuitMenuItem = quitCommand.CreateMenuItem ();
-			fileQuitMenuItem.Clicked += (sender, e) => Application.Exit ();
+			quitCommand.Activated += (sender, e) => Application.Exit ();
 			fileMenu.SubMenu.Items.Add (fileQuitMenuItem);
 
 			var editMenu = new MenuItem ("_Edit");
