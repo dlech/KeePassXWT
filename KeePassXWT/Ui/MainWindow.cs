@@ -5,8 +5,6 @@ namespace KeePassXWT
 {
 	public class MainWindow : Window
 	{
-		CommandManager commandManager;
-
 		public MainWindow ()
 		{
 			StartPosition = WindowPosition.CenterScreen;
@@ -14,24 +12,36 @@ namespace KeePassXWT
 
 			Size = new Size (600, 400);
 
-			commandManager = new CommandManager ();
-
 			MainMenu = new Menu ();
 			var fileMenu = new MenuItem ("_File");
 
 			MainMenu.Items.Add (fileMenu);
 			fileMenu.SubMenu = new Menu ();
 
-			var fileNewMenuItem = new MenuItem (StockCommand.New);
+			var newCommand = new Command (StockCommand.New);
+			Commands.Add (newCommand);
+			var fileNewMenuItem = newCommand.CreateMenuItem ();
 			fileNewMenuItem.Clicked += (sender, e) =>
 			{
 				MessageDialog.RootWindow = this;
 				MessageDialog.Confirm ("NEW!", new Command (StockCommand.Ok));
 			};
 			fileMenu.SubMenu.Items.Add (fileNewMenuItem);
-			commandManager.Commands.Add (fileNewMenuItem.Command);
 
-			var fileQuitMenuItem = new MenuItem (StockCommand.Quit);
+			var openCommand = new Command (StockCommand.Open);
+			var fileOpenMenuItem = openCommand.CreateMenuItem ();
+			fileOpenMenuItem.SubMenu = openCommand.CreateMenu ();
+			fileMenu.SubMenu.Items.Add (fileOpenMenuItem);
+
+			var openCommandAccelerator = new Accelerator (Key.O, ModifierKeys.Control);
+			var openFileCommand = new Command ("OpenFile", "Open _File\u2026", openCommandAccelerator);
+			Commands.Add (openFileCommand);
+			var fileOpenOpenFileMenuItem = openFileCommand.CreateMenuItem ();
+			fileOpenMenuItem.SubMenu.Items.Add (fileOpenOpenFileMenuItem);
+
+			var quitCommand = new Command (StockCommand.Quit);
+			Commands.Add (quitCommand);
+			var fileQuitMenuItem = quitCommand.CreateMenuItem ();
 			fileQuitMenuItem.Clicked += (sender, e) => Application.Exit ();
 			fileMenu.SubMenu.Items.Add (fileQuitMenuItem);
 
@@ -39,7 +49,8 @@ namespace KeePassXWT
 			editMenu.SubMenu = new Menu ();
 			MainMenu.Items.Add (editMenu);
 
-			var editPreferencesMenuItem = new MenuItem (StockCommand.Preferences);
+			var openPreferencesCommand = new Command (StockCommand.Preferences);
+			var editPreferencesMenuItem = openPreferencesCommand.CreateMenuItem ();
 			editMenu.SubMenu.Items.Add (editPreferencesMenuItem);
 
 			Content = new HBox ();
