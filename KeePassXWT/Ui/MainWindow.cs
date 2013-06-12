@@ -22,7 +22,8 @@ namespace KeePassXWT
 			newCommand.Activated += (sender, e) =>
 			{
 				MessageDialog.RootWindow = this;
-				MessageDialog.Confirm ("NEW!", new Command (StockCommand.Ok));
+				var result = MessageDialog.Confirm ("NEW!", "Secondary");
+				result = result;
 			};
 			Commands.Add (newCommand);
 
