@@ -18,14 +18,13 @@ namespace KeePassXWT
 			/* Commands */
 
 			/* New */
-			var newCommand = new Command (StockCommand.New);
+			var newCommand = GlobalCommand.New.Get ();
 			newCommand.Activated += (sender, e) =>
 			{
 				MessageDialog.RootWindow = this;
 				var result = MessageDialog.Confirm ("NEW!", "Secondary");
 				result = result;
 			};
-			Commands.Add (newCommand);
 
 			/* Open File */
 			var openFileCommandAccelerator = new Accelerator (Key.O, ModifierKeys.Control);
@@ -39,7 +38,6 @@ namespace KeePassXWT
 				openFileDialog.Run ();
 				// TODO: Handle actual file opening
 			};
-			Commands.Add (openFileCommand);
 
 			/* Open Url */
 			var openUrlCommandAccelerator = new Accelerator (Key.O, ModifierKeys.Shift | ModifierKeys.Control);
@@ -48,7 +46,6 @@ namespace KeePassXWT
 			{
 				// TODO: add OpenUrlDialog
 			};
-			Commands.Add (openUrlCommand);
 
 			/* Clear Recent List */
 			var clearOpenRecentListCommand = new Command ("OpenRecentClearList", "_Clear List");
@@ -57,23 +54,20 @@ namespace KeePassXWT
 				if (openRecentCommandList != null)
 					openRecentCommandList.Clear ();
 			};
-			Commands.Add (clearOpenRecentListCommand);
 
 			/* Close */
-			var closeCommand = new Command (StockCommand.Close);
+			var closeCommand = GlobalCommand.Close.Get ();
 			closeCommand.Activated += (sender, e) =>
 			{
 				// TODO: handle closing
 			};
-			Commands.Add (closeCommand);
 
 			/* Save */
-			var saveCommand = new Command (StockCommand.Save);
+			var saveCommand = GlobalCommand.Save.Get ();
 			saveCommand.Activated += (sender, e) =>
 			{
 				// TOOD: handle saving
 			};
-			Commands.Add (saveCommand);
 
 			/* Save To File */
 			var saveFileCommand = new Command ("SaveToFile", "Save to _File\u2026");
@@ -81,7 +75,6 @@ namespace KeePassXWT
 			{
 				// TOOD: handle saving
 			};
-			Commands.Add (saveFileCommand);
 
 			/* Save To URL */
 			var saveUrlCommand = new Command ("SaveToURL", "Save to _URL\u2026");
@@ -89,7 +82,6 @@ namespace KeePassXWT
 			{
 				// TOOD: handle saving
 			};
-			Commands.Add (saveUrlCommand);
 
 			/* Save Copy To File */
 			var saveCopyFileCommand = new Command ("SaveCopyToFile", "Save _Copy to File\u2026");
@@ -97,7 +89,6 @@ namespace KeePassXWT
 			{
 				// TOOD: handle saving
 			};
-			Commands.Add (saveCopyFileCommand);
 
 			/* Database Settings */
 			var showDatabaseSettingsCommand = new Command ("DatabaseSettings", "_Database Settings\u2026");
@@ -105,7 +96,6 @@ namespace KeePassXWT
 			{
 				// TOOD: handle
 			};
-			Commands.Add (showDatabaseSettingsCommand);
 
 			/* Change Master Key */
 			var changeMasterKeyCommand = new Command ("ChangeMasterKey", "Change _Master Key\u2026");
@@ -113,31 +103,27 @@ namespace KeePassXWT
 			{
 				// TOOD: handle
 			};
-			Commands.Add (changeMasterKeyCommand);
 
 			/* Print */
-			var printCommand = new Command (StockCommand.Print);
+			var printCommand = GlobalCommand.Print.Get ();
 			printCommand.Activated += (sender, e) =>
 			{
 				// TOOD: handle
 			};
-			Commands.Add (printCommand);
 
 			/* Import */
-			var importcommand = new Command (StockCommand.Import);
+			var importcommand = GlobalCommand.Import.Get ();
 			importcommand.Activated += (sender, e) =>
 			{
 				// TOOD: handle
 			};
-			Commands.Add (importcommand);
 
 			/* Export */
-			var exportcommand = new Command (StockCommand.Export);
+			var exportcommand = GlobalCommand.Export.Get();
 			exportcommand.Activated += (sender, e) =>
 			{
 				// TOOD: handle
 			};
-			Commands.Add (exportcommand);
 
 			/* Synchronize File */
 			var synchronizeFileCommand = new Command ("SynchronizeFile", "Synchronize with _File\u2026");
@@ -145,7 +131,6 @@ namespace KeePassXWT
 			{
 				// TOOD: handle
 			};
-			Commands.Add (synchronizeFileCommand);
 
 			/* Synchronize URL */
 			var synchronizeUrlCommand = new Command ("SynchronizeURL", "Synchronize with _URL\u2026");
@@ -153,7 +138,6 @@ namespace KeePassXWT
 			{
 				// TOOD: handle
 			};
-			Commands.Add (synchronizeUrlCommand);
 
 			/* Clear Synchronize Recent List */
 			var clearSynchronizeRecentListCommand = new Command ("SynchronizeRecentClearList", "_Clear List");
@@ -162,7 +146,6 @@ namespace KeePassXWT
 				if (synchronizeRecentCommandList != null)
 					synchronizeRecentCommandList.Clear ();
 			};
-			Commands.Add (clearSynchronizeRecentListCommand);
 
 			/* Lock Workspace */
 			var lockWorkspaceAccelerator = new Accelerator (Key.L, ModifierKeys.Control);
@@ -171,16 +154,13 @@ namespace KeePassXWT
 			{
 				// TOOD: handle
 			};
-			Commands.Add (lockWorkspaceCommand);
 
 			/* Preferences/Options */
-			var showPreferencesCommand = new Command (StockCommand.Preferences);
-			Commands.Add (showPreferencesCommand);
+			var showPreferencesCommand = GlobalCommand.Preferences.Get ();
 
 			/* Quit */
-			var quitCommand = new Command (StockCommand.Quit);
+			var quitCommand = GlobalCommand.Quit.Get ();
 			quitCommand.Activated += (sender, e) => Application.Exit ();
-			Commands.Add (quitCommand);
 
 
 			/* Main Menu */

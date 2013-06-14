@@ -64,7 +64,9 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup Condition="'$(Configuration)' == 'Debug WPF'">
-    <XwtDlls Include="..\xwt\Xwt.Wpf\bin\x86\Debug\*" />
+    <XwtDlls Include="..\xwt\Xwt.WPF\bin\x86\Debug\*">
+      <Visible>false</Visible>
+    </XwtDlls>
   </ItemGroup>
   <ItemGroup Condition="'$(Configuration)' == 'Debug Gtk'">
     <XwtDlls Include="..\xwt\Xwt.Gtk\bin\x86\Debug\*">
