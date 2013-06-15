@@ -8,26 +8,25 @@ namespace KeePassXWT
 	public class Program
 	{
 		// single apartment thread needed for windows backend
-		[STAThreadAttribute()]
+		//[STAThreadAttribute()]
 		static void Main(string[] args) {
 			ToolkitType toolkitType;
-			var engine = new Xwt.Mac.MacEngine();
-
 #if FORCE_GTK
-			switch (PlatformID.Unix) {
+			var platform = PlatformID.Unix;
 #else
-			switch (Environment.OSVersion.Platform) {
+			var platform = Environment.OSVersion.Platform;
+
+			// workaround for returning Unix even though we are on OSX
+			if (platform == PlatformID.Unix && Directory.Exists("/Applications") & Directory.Exists("/System") &
+			    Directory.Exists("/Users") & Directory.Exists("/Volumes"))
+
+				platform = PlatformID.MacOSX;
 #endif
+			switch (platform) {
 				case PlatformID.Win32NT:
 					toolkitType = ToolkitType.Wpf;
 					break;
 				case PlatformID.Unix:
-					// workaround for returning Unix even though we are on OSX
-					if (Directory.Exists("/Applications") & Directory.Exists("/System") &
-					    Directory.Exists("/Users") & Directory.Exists("/Volumes"))
-
-						goto case PlatformID.MacOSX;
-
 					toolkitType = ToolkitType.Gtk;
 					break;
 				case PlatformID.MacOSX:

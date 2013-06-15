@@ -55,25 +55,17 @@
   <PropertyGroup>
     <RunPostBuildEvent>Always</RunPostBuildEvent>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug Mac|x86' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug Mac|AnyCPU' ">
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
+    <OutputPath>bin\Debug</OutputPath>
     <WarningLevel>4</WarningLevel>
-    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DefineConstants>DEBUG</DefineConstants>
     <CustomCommands>
       <CustomCommands>
-        <Command type="AfterBuild" command="cp ${SolutionDir}/xwt/Xwt.Mac/bin/Debug/Xwt.Mac.dll ${TargetDir}" />
-        <Command type="AfterClean" command="rm -f ${TargetDir}/Xwt.Mac.dll" />
-        <Command type="AfterBuild" command="cp ${SolutionDir}/xwt/Xwt.Mac/bin/Debug/Xwt.Mac.dll.mdb ${TargetDir}" />
-        <Command type="AfterClean" command="rm -f ${TargetDir}/Xwt.Mac.dll.mdb" />
+        <Command type="BeforeExecute" command="script/debug/copy-mac-dll.sh" />
       </CustomCommands>
     </CustomCommands>
-    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
-    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -87,10 +79,6 @@
       <Project>{92494904-35FA-4DC9-BDE9-3A3E87AC49D3}</Project>
       <Name>Xwt</Name>
     </ProjectReference>
-    <ProjectReference Include="..\xwt\Xwt.Mac\Xwt.Mac.csproj">
-      <Project>{B7C1673E-5124-4BE5-8D21-EC8B12F85B6B}</Project>
-      <Name>Xwt.Mac</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -102,4 +90,11 @@
   <Target Name="AfterClean">
     <Delete Files="$(OutputPath)%(XwtDlls.FileName)%(XwtDlls.Extension)" TreatErrorsAsWarnings="true" />
   </Target>
+  <ItemGroup>
+    <Folder Include="script\" />
+    <Folder Include="script\debug\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="script\debug\copy-mac-dll.sh" />
+  </ItemGroup>
 </Project>
