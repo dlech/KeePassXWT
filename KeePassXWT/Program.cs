@@ -1,6 +1,7 @@
 using System;
 using Xwt;
 using System.Reflection;
+using System.IO;
 
 namespace KeePassXWT
 {
@@ -10,6 +11,7 @@ namespace KeePassXWT
 		[STAThreadAttribute()]
 		static void Main(string[] args) {
 			ToolkitType toolkitType;
+			var engine = new Xwt.Mac.MacEngine();
 
 #if FORCE_GTK
 			switch (PlatformID.Unix) {
@@ -20,6 +22,12 @@ namespace KeePassXWT
 					toolkitType = ToolkitType.Wpf;
 					break;
 				case PlatformID.Unix:
+					// workaround for returning Unix even though we are on OSX
+					if (Directory.Exists("/Applications") & Directory.Exists("/System") &
+					    Directory.Exists("/Users") & Directory.Exists("/Volumes"))
+
+						goto case PlatformID.MacOSX;
+
 					toolkitType = ToolkitType.Gtk;
 					break;
 				case PlatformID.MacOSX:
