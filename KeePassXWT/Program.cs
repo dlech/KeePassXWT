@@ -8,7 +8,7 @@ namespace KeePassXWT
 	public class Program
 	{
 		// single apartment thread needed for windows backend
-		//[STAThreadAttribute()]
+		[STAThreadAttribute()]
 		static void Main(string[] args) {
 			ToolkitType toolkitType;
 #if FORCE_GTK
