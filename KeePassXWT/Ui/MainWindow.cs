@@ -163,14 +163,41 @@ namespace KeePassXWT
 			quitCommand.Activated += (sender, e) => Application.Exit ();
 
 
+			/* About */
+			var aboutCommand = new Command ("About", "_About");
+
+
 			/* Main Menu */
 
 			MainMenu = new Menu ();
 
+			// TODO: check for platform
+			var isOSX = true;
+
+			if (isOSX)
+			{
+				/* Application */
+				var appMenu = new MenuItem (); // title is automatic
+				MainMenu.Items.Add (appMenu);
+				appMenu.SubMenu = new Menu ();
+
+				/* Application > About */
+				appMenu.SubMenu.Items.Add (aboutCommand.CreateMenuItem());
+
+				/* Application > Preferences */
+				var appPreferencesMenuItem = showPreferencesCommand.CreateMenuItem ();
+				appMenu.SubMenu.Items.Add (appPreferencesMenuItem);
+
+				appMenu.SubMenu.Items.Add (new SeparatorMenuItem());
+
+				/* Application > Quit */
+				appMenu.SubMenu.Items.Add (quitCommand.CreateMenuItem());
+			}
+
 			/* File */
 			var fileMenu = new MenuItem ("_File");
-			MainMenu.Items.Add (fileMenu);
 			fileMenu.SubMenu = new Menu ();
+			MainMenu.Items.Add (fileMenu);
 			var fileNewMenuItem = newCommand.CreateMenuItem ();
 
 			/* File > New... */
@@ -302,20 +329,48 @@ namespace KeePassXWT
 			/* File > Lock Workspace */
 			fileMenu.SubMenu.Items.Add (lockWorkspaceCommand.CreateMenuItem ());
 
-			fileMenu.SubMenu.Items.Add (new SeparatorMenuItem ());
+			if (!isOSX) {
+				fileMenu.SubMenu.Items.Add (new SeparatorMenuItem ());
 
-			/* File > Quit */
-			fileMenu.SubMenu.Items.Add (quitCommand.CreateMenuItem ());
+				/* File > Quit */
+				fileMenu.SubMenu.Items.Add (quitCommand.CreateMenuItem ());
+			}
 
 			/* Edit */
 			var editMenu = new MenuItem ("_Edit");
 			editMenu.SubMenu = new Menu ();
 			MainMenu.Items.Add (editMenu);
 
-			/* Edit > Preferences */
-			var editPreferencesMenuItem = showPreferencesCommand.CreateMenuItem ();
-			editMenu.SubMenu.Items.Add (editPreferencesMenuItem);
+			if (!isOSX) {
+				/* Edit > Preferences */
+				var editPreferencesMenuItem = showPreferencesCommand.CreateMenuItem ();
+				editMenu.SubMenu.Items.Add (editPreferencesMenuItem);
+			}
 
+			/* View */
+
+			var viewMenu = new MenuItem ("_View");
+			viewMenu.SubMenu = new Menu ();
+			MainMenu.Items.Add (viewMenu);
+
+
+			/* Tools */
+
+			var toolsMenu = new MenuItem ("_Tools");
+			toolsMenu.SubMenu = new Menu ();
+			MainMenu.Items.Add (toolsMenu);
+
+
+			/* Help */
+
+			var helpMenu = new MenuItem ("_Help");
+			helpMenu.SubMenu = new Menu ();
+			MainMenu.Items.Add (helpMenu);
+
+			if (!isOSX) {
+				/* Help > About */
+				helpMenu.SubMenu.Items.Add (aboutCommand.CreateMenuItem());
+			}
 
 			/* Content */
 
