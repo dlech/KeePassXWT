@@ -13,7 +13,7 @@ namespace KeePassXWT
 		{
 			StartPosition = WindowPosition.CenterScreen;
 			Size = new Size (600, 400);
-			Title = "KeePassXWT";
+			//Title = ApplicationName;
 
 			/* Commands */
 
@@ -27,7 +27,7 @@ namespace KeePassXWT
 			};
 
 			/* Open File */
-			var openFileCommandAccelerator = new Accelerator (Key.O, ModifierKeys.Control);
+			var openFileCommandAccelerator = new Accelerator (Key.o, ModifierKeys.Command);
 			var openFileCommand = new Command ("OpenFile", "Open _File\u2026", openFileCommandAccelerator);
 			openFileCommand.Activated += (sender, e) =>
 			{
@@ -40,7 +40,7 @@ namespace KeePassXWT
 			};
 
 			/* Open Url */
-			var openUrlCommandAccelerator = new Accelerator (Key.O, ModifierKeys.Shift | ModifierKeys.Control);
+			var openUrlCommandAccelerator = new Accelerator (Key.O, ModifierKeys.Command);
 			var openUrlCommand = new Command ("OpenUrl", "Open _URL\u2026", openUrlCommandAccelerator);
 			openUrlCommand.Activated += (sender, e) =>
 			{
@@ -126,14 +126,18 @@ namespace KeePassXWT
 			};
 
 			/* Synchronize File */
-			var synchronizeFileCommand = new Command ("SynchronizeFile", "Synchronize with _File\u2026");
+			var synchronizeFileAccelerator = new Accelerator (Key.r, ModifierKeys.Command);
+			var synchronizeFileCommand = new Command ("SynchronizeFile", "Synchronize with _File\u2026",
+			                                          synchronizeFileAccelerator);
 			synchronizeFileCommand.Activated += (sender, e) =>
 			{
 				// TOOD: handle
 			};
 
 			/* Synchronize URL */
-			var synchronizeUrlCommand = new Command ("SynchronizeURL", "Synchronize with _URL\u2026");
+			var synchronizeUrlAccelerator = new Accelerator (Key.R, ModifierKeys.Command);
+			var synchronizeUrlCommand = new Command ("SynchronizeURL", "Synchronize with _URL\u2026",
+			                                         synchronizeUrlAccelerator);
 			synchronizeUrlCommand.Activated += (sender, e) =>
 			{
 				// TOOD: handle
@@ -148,7 +152,7 @@ namespace KeePassXWT
 			};
 
 			/* Lock Workspace */
-			var lockWorkspaceAccelerator = new Accelerator (Key.L, ModifierKeys.Control);
+			var lockWorkspaceAccelerator = new Accelerator (Key.l, ModifierKeys.Command);
 			var lockWorkspaceCommand = new Command ("LockWorkspace", "_Lock Workspace", lockWorkspaceAccelerator);
 			lockWorkspaceCommand.Activated += (sender, e) =>
 			{
