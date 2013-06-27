@@ -171,10 +171,10 @@ namespace KeePassXWT
 
 			MainMenu = new Menu ();
 
-			// TODO: check for platform
-			var isOSX = true;
+			var isOSXToolkit = Toolkit.CurrentEngine.Type == ToolkitType.Cocoa ||
+			                   Toolkit.CurrentEngine.Type == ToolkitType.XamMac;
 
-			if (isOSX)
+			if (isOSXToolkit)
 			{
 				/* Application */
 				var appMenu = new MenuItem (); // title is automatic
@@ -329,7 +329,7 @@ namespace KeePassXWT
 			/* File > Lock Workspace */
 			fileMenu.SubMenu.Items.Add (lockWorkspaceCommand.CreateMenuItem ());
 
-			if (!isOSX) {
+			if (!isOSXToolkit) {
 				fileMenu.SubMenu.Items.Add (new SeparatorMenuItem ());
 
 				/* File > Quit */
@@ -341,7 +341,7 @@ namespace KeePassXWT
 			editMenu.SubMenu = new Menu ();
 			MainMenu.Items.Add (editMenu);
 
-			if (!isOSX) {
+			if (!isOSXToolkit) {
 				/* Edit > Preferences */
 				var editPreferencesMenuItem = showPreferencesCommand.CreateMenuItem ();
 				editMenu.SubMenu.Items.Add (editPreferencesMenuItem);
@@ -367,7 +367,7 @@ namespace KeePassXWT
 			helpMenu.SubMenu = new Menu ();
 			MainMenu.Items.Add (helpMenu);
 
-			if (!isOSX) {
+			if (!isOSXToolkit) {
 				/* Help > About */
 				helpMenu.SubMenu.Items.Add (aboutCommand.CreateMenuItem());
 			}
@@ -381,8 +381,6 @@ namespace KeePassXWT
 
 			CloseRequested += (sender, args) => quitCommand.Activate();
 		}
-
-
 	}
 }
 
