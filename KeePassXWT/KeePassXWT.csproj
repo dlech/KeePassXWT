@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug WPF</Configuration>
@@ -6,7 +6,7 @@
     <ProductVersion>10.0.0</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{EBD72AC6-1974-47C7-BF45-5B2838F25C10}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Library</OutputType>
     <RootNamespace>KeePassXWT</RootNamespace>
     <AssemblyName>KeePassXWT</AssemblyName>
   </PropertyGroup>
@@ -33,7 +33,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug Gtk|x86'">
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;FORCE_GTK</DefineConstants>
+    <DefineConstants>DEBUG</DefineConstants>
     <DebugType>full</DebugType>
     <PlatformTarget>x86</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
@@ -67,9 +67,11 @@
       </CustomCommands>
     </CustomCommands>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <Compile Include="Program.cs" />
     <Compile Include="Ui\MainWindow.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -90,10 +92,7 @@
   <Target Name="AfterClean">
     <Delete Files="$(OutputPath)%(XwtDlls.FileName)%(XwtDlls.Extension)" TreatErrorsAsWarnings="true" />
   </Target>
-  <ItemGroup>
-    <Folder Include="script\" />
-    <Folder Include="script\debug\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="script\debug\copy-mac-dll.sh" />
   </ItemGroup>
