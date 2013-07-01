@@ -349,7 +349,14 @@ namespace KeePassXWT
 				/* Edit > Preferences */
 				var editPreferencesMenuItem = showPreferencesCommand.CreateMenuItem ();
 				editMenu.SubMenu.Items.Add (editPreferencesMenuItem);
+
+				editMenu.SubMenu.Items.Add (new SeparatorMenuItem ());
 			}
+			
+			editMenu.SubMenu.Items.Add (GlobalCommand.Cut.Get().CreateMenuItem ());
+			GlobalCommand.Cut.Get().Activated += (sender, e) => MessageDialog.ShowMessage("Cut");
+			editMenu.SubMenu.Items.Add (GlobalCommand.Copy.Get().CreateMenuItem ());
+			editMenu.SubMenu.Items.Add (GlobalCommand.Paste.Get().CreateMenuItem ());
 
 			/* View */
 
@@ -378,7 +385,10 @@ namespace KeePassXWT
 
 			/* Content */
 
-			Content = new HBox ();
+			var content = new HBox ();
+			content.PackStart (new TextEntry ());
+			content.PackStart (new Button ("test"));
+			Content = content;
 
 
 			/* Events */
