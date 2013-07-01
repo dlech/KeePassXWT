@@ -18,7 +18,7 @@ namespace KeePassXWT
 			/* Commands */
 
 			/* New */
-			var newCommand = GlobalCommand.New.Get ();
+			var newCommand = StockCommand.New.GetGlobalInstance ();
 			newCommand.Activated += (sender, e) =>
 			{
 				MessageDialog.RootWindow = this;
@@ -56,92 +56,43 @@ namespace KeePassXWT
 			};
 
 			/* Close */
-			var closeCommand = GlobalCommand.Close.Get ();
-			closeCommand.Activated += (sender, e) =>
-			{
-				// TODO: handle closing
-			};
+			var closeCommand = StockCommand.Close.GetGlobalInstance ();
 
 			/* Save */
-			var saveCommand = GlobalCommand.Save.Get ();
-			saveCommand.Activated += (sender, e) =>
-			{
-				// TOOD: handle saving
-			};
-
+			var saveCommand = StockCommand.Save.GetGlobalInstance ();
 			/* Save To File */
 			var saveFileCommand = new Command ("SaveToFile", "Save to _File\u2026");
-			saveFileCommand.Activated += (sender, e) =>
-			{
-				// TOOD: handle saving
-			};
 
 			/* Save To URL */
 			var saveUrlCommand = new Command ("SaveToURL", "Save to _URL\u2026");
-			saveUrlCommand.Activated += (sender, e) =>
-			{
-				// TOOD: handle saving
-			};
 
 			/* Save Copy To File */
 			var saveCopyFileCommand = new Command ("SaveCopyToFile", "Save _Copy to File\u2026");
-			saveCopyFileCommand.Activated += (sender, e) =>
-			{
-				// TOOD: handle saving
-			};
 
 			/* Database Settings */
 			var showDatabaseSettingsCommand = new Command ("DatabaseSettings", "_Database Settings\u2026");
-			showDatabaseSettingsCommand.Activated += (sender, e) =>
-			{
-				// TOOD: handle
-			};
 
 			/* Change Master Key */
 			var changeMasterKeyCommand = new Command ("ChangeMasterKey", "Change _Master Key\u2026");
-			changeMasterKeyCommand.Activated += (sender, e) =>
-			{
-				// TOOD: handle
-			};
 
 			/* Print */
-			var printCommand = GlobalCommand.Print.Get ();
-			printCommand.Activated += (sender, e) =>
-			{
-				// TOOD: handle
-			};
+			var printCommand = StockCommand.Print.GetGlobalInstance ();
 
 			/* Import */
-			var importcommand = GlobalCommand.Import.Get ();
-			importcommand.Activated += (sender, e) =>
-			{
-				// TOOD: handle
-			};
+			var importcommand = StockCommand.Import.GetGlobalInstance ();
 
 			/* Export */
-			var exportcommand = GlobalCommand.Export.Get();
-			exportcommand.Activated += (sender, e) =>
-			{
-				// TOOD: handle
-			};
+			var exportcommand = StockCommand.Export.GetGlobalInstance();
 
 			/* Synchronize File */
 			var synchronizeFileAccelerator = new Accelerator (Key.r, ModifierKeys.Command);
 			var synchronizeFileCommand = new Command ("SynchronizeFile", "Synchronize with _File\u2026",
 			                                          synchronizeFileAccelerator);
-			synchronizeFileCommand.Activated += (sender, e) =>
-			{
-				// TOOD: handle
-			};
 
 			/* Synchronize URL */
 			var synchronizeUrlAccelerator = new Accelerator (Key.R, ModifierKeys.Command);
 			var synchronizeUrlCommand = new Command ("SynchronizeURL", "Synchronize with _URL\u2026",
 			                                         synchronizeUrlAccelerator);
-			synchronizeUrlCommand.Activated += (sender, e) =>
-			{
-				// TOOD: handle
-			};
 
 			/* Clear Synchronize Recent List */
 			var clearSynchronizeRecentListCommand = new Command ("SynchronizeRecentClearList", "_Clear List");
@@ -154,17 +105,13 @@ namespace KeePassXWT
 			/* Lock Workspace */
 			var lockWorkspaceAccelerator = new Accelerator (Key.l, ModifierKeys.Command);
 			var lockWorkspaceCommand = new Command ("LockWorkspace", "_Lock Workspace", lockWorkspaceAccelerator);
-			lockWorkspaceCommand.Activated += (sender, e) =>
-			{
-				// TOOD: handle
-			};
 
 			/* Preferences/Options */
-			var showPreferencesCommand = GlobalCommand.Preferences.Get ();
+			var showPreferencesCommand = StockCommand.Preferences.GetGlobalInstance ();
 
 			/* Quit */
-			var quitCommand = GlobalCommand.Quit.Get ();
-			quitCommand.Activated += (sender, e) => Application.Exit ();
+			var quitCommand = StockCommand.Quit.GetGlobalInstance ();
+			//quitCommand.Activated += (sender, e) => Application.Exit ();
 
 
 			/* About */
@@ -353,10 +300,10 @@ namespace KeePassXWT
 				editMenu.SubMenu.Items.Add (new SeparatorMenuItem ());
 			}
 			
-			editMenu.SubMenu.Items.Add (GlobalCommand.Cut.Get().CreateMenuItem ());
-			GlobalCommand.Cut.Get().Activated += (sender, e) => MessageDialog.ShowMessage("Cut");
-			editMenu.SubMenu.Items.Add (GlobalCommand.Copy.Get().CreateMenuItem ());
-			editMenu.SubMenu.Items.Add (GlobalCommand.Paste.Get().CreateMenuItem ());
+			editMenu.SubMenu.Items.Add (StockCommand.Cut.GetGlobalInstance().CreateMenuItem ());
+			StockCommand.Cut.GetGlobalInstance().Activated += (sender, e) => MessageDialog.ShowMessage("Cut");
+			editMenu.SubMenu.Items.Add (StockCommand.Copy.GetGlobalInstance().CreateMenuItem ());
+			editMenu.SubMenu.Items.Add (StockCommand.Paste.GetGlobalInstance().CreateMenuItem ());
 
 			/* View */
 
